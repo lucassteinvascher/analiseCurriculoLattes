@@ -1,3 +1,3 @@
 # analiseCurriculoLattes
 
-Projeto criado para dado um conjunto de dados verificar se os mesmos possuem curriculo lattes
+Projeto criado para verificar se dados um conjunto de dados(Nomes) os mesmos possuem curriculo lattes.

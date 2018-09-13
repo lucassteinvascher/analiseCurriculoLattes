@@ -1,24 +1,6 @@
-###########  libraries ###########
 import requests
 from bs4 import BeautifulSoup
 import Dados as dd
-
-########## body ###########
-
-def TemOuNaoCurriculo(pessoa):
-    contador = 0
-    Auxiliar = ''
-
-    for v in pessoa:
-        for a in dd.alfabeto:
-            if (v == a and contador < 9):
-                Auxiliar += a
-                contador += 1
-
-    if (Auxiliar == 'Resultado'):
-        return 1 # Tem curriculo
-    else:
-        return 0 #Não tem curriculo
 
 
 #dado um conjunto de dados, converte o valor procurado no esperado
@@ -48,15 +30,53 @@ def CriarURLManipulacao(dados):
 
 
 # Dada determinada URL(pagina web) Valida de itens passados na URL
-def validaSeTemCurriculo(URL):
-
+def requisicaoNaWeb(URL):
+    resultados = []
+    textoRetorno = ''
+    tamanhoRetorno = 0
     for i in URL:
         r = requests.get(i)
         soup = BeautifulSoup(r.content, 'html.parser')
-        texto = soup.find('div', class_='tit_form').get_text()
-        print(i)
-        print(texto)
-        print(texto.__len__())
+        textoRetorno = soup.find('div', class_='tit_form').get_text()
+        resultados.append(textoRetorno)
+        # resultados[1].append(textoRetorno.__len__())
 
 
 
+    return resultados
+
+def MatrizDeDados(nome,URL,textoRetorno):
+
+    matriz = [[],[],[],[]]
+    contador = 0
+
+    for i in nome:
+
+        matriz[0].append(nome[contador])
+        matriz[1].append(URL[contador])
+        matriz[2].append([contador])
+        # matriz[3] = tamanhoTexto[contador]
+        contador += 1
+
+    return matriz
+
+
+def TemOuNaoCurriculo(pessoa):
+
+    for v in pessoa:
+
+        contador = 0
+        Auxiliar = ''
+
+        for a in dd.alfabeto:
+            if (v == a and contador < 9):
+                Auxiliar += a
+                contador += 1
+
+    if (Auxiliar == 'Resultado'):
+        print('teste1')
+        return 1 # Tem curriculo
+
+    else:
+        print('teste2')
+        return 0 #Não tem curriculo

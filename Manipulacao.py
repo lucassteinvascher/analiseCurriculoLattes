@@ -41,42 +41,15 @@ def requisicaoNaWeb(URL):
         resultados.append(textoRetorno)
         # resultados[1].append(textoRetorno.__len__())
 
-
-
     return resultados
 
-def MatrizDeDados(nome,URL,textoRetorno):
 
-    matriz = [[],[],[],[]]
-    contador = 0
+#Elimina os candidatos que não tem seu nome relacionado em nenhum curriculo lattes
+def analisaCitacao(pessoa):
+    citados = []
+    for p in pessoa:
+        if (p.__len__() >= 100):
+            citados.append(p)
 
-    for i in nome:
+    return citados
 
-        matriz[0].append(nome[contador])
-        matriz[1].append(URL[contador])
-        matriz[2].append([contador])
-        # matriz[3] = tamanhoTexto[contador]
-        contador += 1
-
-    return matriz
-
-
-def TemOuNaoCurriculo(pessoa):
-
-    for v in pessoa:
-
-        contador = 0
-        Auxiliar = ''
-
-        for a in dd.alfabeto:
-            if (v == a and contador < 9):
-                Auxiliar += a
-                contador += 1
-
-    if (Auxiliar == 'Resultado'):
-        print('teste1')
-        return 1 # Tem curriculo
-
-    else:
-        print('teste2')
-        return 0 #Não tem curriculo

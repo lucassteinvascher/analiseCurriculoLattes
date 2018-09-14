@@ -5,12 +5,4 @@ import Dados as dd
 dadosConvertidos = mp.conversaoCaracteres(dd.bancoComissionados['Nome'],' ','+')
 URL = mp.CriarURLManipulacao(dadosConvertidos)
 requisicao = mp.requisicaoNaWeb(URL)
-novoBanco = mp.MatrizDeDados(dd.bancoComissionados['Nome'],URL,requisicao)
-contador = 0
-for i in novoBanco:
-    print(novoBanco)
-
-
-
-
-print('oi')
+citados = mp.analisaCitacao(requisicao)
